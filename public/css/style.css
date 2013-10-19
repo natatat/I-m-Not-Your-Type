@@ -1,6 +1,6 @@
 body {
   margin:0;
-  background-image:url('http://www.dvd-ppt-slideshow.com/images/ppt-background/background-11.jpg');
+  /*background-image:url('http://www.dvd-ppt-slideshow.com/images/ppt-background/background-11.jpg');*/
 }
 
 #container {
@@ -14,20 +14,25 @@ body {
   font-size: 30px;
 }
 
-#text-to-type {
+#highlighted-text {
   position:relative;
   font-size: 20px;
-  width:600px;
+  width:500px;
   margin: 0 auto;
+  line-height: 28px;
 }
 
-#test {
+#test-string {
   display:none;
 }
 
 .letters {
   white-space:pre;
-  margin:-2.5px;
+  margin:0px;
+}
+
+.spaces {
+  margin:0px;
 }
 
 #active {
@@ -61,7 +66,7 @@ body {
 }
 
 td {
-  width:70px;
+  width:50px;
 }
 
 #text-box {
@@ -85,6 +90,7 @@ td {
 }
 
 #stats {
+  font-weight: bold;
   position:relative;
   padding-top: 40px;
   width:600px;
