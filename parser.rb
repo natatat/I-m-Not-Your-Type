@@ -1,7 +1,7 @@
 require 'nokogiri'
 require 'open-uri'
 
-class Parse
+module Parser
   def self.noko(*urls)
     @noko_urls = []
 
