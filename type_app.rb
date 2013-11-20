@@ -13,8 +13,7 @@ end
 set :database, ENV['DATABASE_URL']
 
 get '/' do
-  @passages = Passage.all
-  @passage = Passage.find(rand(20))
+  @passage = Passage.find(rand(43))
   erb :index
 end
 

@@ -8,9 +8,10 @@ gem 'pg'
 
 group :development, :test do
   gem 'dotenv'
+  gem 'shotgun'
   gem 'nokogiri'
   gem 'rspec'
-  gem 'capybara'
-  gem 'shotgun'
   gem 'jasmine'
+  gem 'capybara'
+  gem 'shoulda-matchers'
 end

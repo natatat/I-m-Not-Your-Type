@@ -101,6 +101,8 @@ function startTyping() {
 
   function bindEventListeners() {
     document.getElementById('typing-zone').addEventListener('keypress', gameLogic);
+    // var typeZone = document.getElementById('typing-zone');
+      // typeZone.addEventListener('keypress', gameLogic);
   }
 
   function renderString(id, string) {
@@ -124,13 +126,7 @@ function startTyping() {
 // HELPERS
 
 function keyPressed(keycode) {
-  if (keycode === 222) {
-    return "'"
-  } else if (keycode === 32) {
-    return " "
-  } else {
-    return String.fromCharCode(keycode)
-  }
+  return String.fromCharCode(keycode)
 }
 
 function numberOfWords(string) {

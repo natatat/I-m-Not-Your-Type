@@ -90,6 +90,8 @@ td {
 }
 
 #stats {
+  font-family: courier;
+  font-size: 18px;
   font-weight: bold;
   position:relative;
   padding-top: 40px;

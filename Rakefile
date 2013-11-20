@@ -1,6 +1,8 @@
-require './type_app'
+$LOAD_PATH.unshift(File.expand_path('.'))
+
+require 'type_app'
 require 'sinatra/activerecord/rake'
-require './parsing'
+require 'parser'
 require 'models/passage'
 
 begin
@@ -24,8 +26,8 @@ namespace :db do
   desc "Populate database with random passages from blogz"
   task :populate do
     Parse.noko('http://natatdbc.tumblr.com/', 'http://therubynuby.tumblr.com/', 'http://annie-sing.tumblr.com/', 'http://jenn-wen.tumblr.com/', 'http://blog.danbender.net/', 'http://cartersowers.tumblr.com/', 'http://ryanhedges.tumblr.com/', 'http://steveo1485.tumblr.com/')
-    50.times do
-      Passage.create(text: Parse.rand_passage[:passage], author: Parse.rand_passage[:author])
+    150.times do
+      Passage.create(text: Parse.random_passage[:passage], author: Parse.random_passage[:author])
     end
   end
 end
