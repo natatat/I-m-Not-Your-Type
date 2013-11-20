@@ -1,3 +1,27 @@
+var StatHelper = {
+
+  keyPressed: function(keycode) {
+    return String.fromCharCode(keycode)
+  },
+
+  numberOfWords: function(string) {
+    var length = string.split(' ').length;
+    return length;
+  },
+
+  wordsPerMinute: function(time, string) {
+    var numberWordsInPrompt = this.numberOfWords(string);
+    var timeInMinutes = time/60;
+    var wpm = Math.floor(numberWordsInPrompt/timeInMinutes);
+    return wpm;
+  },
+
+  accuracyRating: function(user_typed, actual_text) {
+    return Math.floor((actual_text.length)/user_typed * 100);
+  }
+
+}
+
 function startTyping() {
 
   bindEventListeners();
@@ -10,14 +34,13 @@ function startTyping() {
   var testString = document.getElementById("test-string").innerText;
 
   parseStringToHighlight(testString);
-  createGirlRunsTable();
 
   function gameLogic(event) {
-    concatenatingString(keyPressed(event.keyCode), testString);
+    concatenatingString(StatHelper.keyPressed(event.keyCode), testString);
     if (isDone(testString)) {
       var timeInSeconds = Math.floor((timer.endTime - timer.startTime) / 1000);
-      var wpm = wordsPerMinute(timeInSeconds, testString);
-      var accuracy = accuracyRating(totalCharsPressed,testString);
+      var wpm = StatHelper.wordsPerMinute(timeInSeconds, testString);
+      var accuracy = StatHelper.accuracyRating(totalCharsPressed,testString);
       renderAccuracy("accuracy", accuracy);
       renderSecondsElapsed("time-elapsed", timeInSeconds);
       renderWPM("wpm", wpm);
@@ -37,7 +60,6 @@ function startTyping() {
     if(char === testString[latestChar]) {
       ++latestChar;
       highlight();
-      girlRuns(testString);
       return true;
     }
     return false;
@@ -55,29 +77,9 @@ function startTyping() {
     }
   }
 
-  function createGirlRunsTable() {
-    for (var i = 0; i < testString.length; i++) {
-      $("#gurl-table").append("<td></td>");
-    }
-  }
-
   function highlight() {
     $("#highlighted-text span:nth-child(" + (latestChar + 1) + ")").attr("id", "active");
     $("#highlighted-text span:nth-child(" + (latestChar) + ")").removeAttr("id");
-  }
-
-  function girlRuns(testString) {
-    ++nthChildCounter;
-    updateGurlPosition();
-  }
-
-  function updateGurlPosition() {
-    if (latestChar === testString.length) {
-      $("#gurl-image td:nth-child(" + (nthChildCounter - 1) + ")").empty();
-    } else {
-    $("#gurl-image td:nth-child(" + nthChildCounter + ")").html('<img src="gurl.png" width="134px" height="179px">');
-    $("#gurl-image td:nth-child(" + (nthChildCounter - 1) + ")").empty();
-  }
   }
 
   function concatenatingString(letter, string) {
@@ -119,26 +121,4 @@ function startTyping() {
     document.getElementById(id).innerText = "accuracy: " + accuracy + "%";
   }
 
-}
-
-// HELPERS
-
-function keyPressed(keycode) {
-  return String.fromCharCode(keycode)
-}
-
-function numberOfWords(string) {
-  var length = string.split(' ').length;
-  return length;
-}
-
-function wordsPerMinute(time, string) {
-  var numberWordsInPrompt = numberOfWords(string);
-  var timeInMinutes = time/60;
-  var wpm = Math.floor(numberWordsInPrompt/timeInMinutes);
-  return wpm;
-}
-
-function accuracyRating(user_typed, actual_text) {
-  return Math.floor((actual_text.length)/user_typed * 100);
 }
