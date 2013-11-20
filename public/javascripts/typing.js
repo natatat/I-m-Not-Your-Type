@@ -97,28 +97,26 @@ function startTyping() {
     }
   }
 
-  // VIEWS
-
   function bindEventListeners() {
     document.getElementById('typing-zone').addEventListener('keypress', gameLogic);
-    // var typeZone = document.getElementById('typing-zone');
-      // typeZone.addEventListener('keypress', gameLogic);
   }
+
+  // VIEW RENDERERS
 
   function renderString(id, string) {
     document.getElementById(id).innerText = string;
   }
 
   function renderSecondsElapsed(id, seconds) {
-    document.getElementById(id).innerText = "Seconds Elapsed: " + seconds;
+    document.getElementById(id).innerText = "total seconds: " + seconds;
   }
 
   function renderWPM(id, wpm) {
-    document.getElementById(id).innerText = "WPM: " + wpm;
+    document.getElementById(id).innerText = "words per minute: " + wpm;
   }
 
   function renderAccuracy(id, accuracy) {
-    document.getElementById(id).innerText = "Accuracy: " + accuracy + "%";
+    document.getElementById(id).innerText = "accuracy: " + accuracy + "%";
   }
 
 }

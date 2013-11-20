@@ -1,25 +1,25 @@
 body {
-  margin:0;
-  /*background-image:url('http://www.dvd-ppt-slideshow.com/images/ppt-background/background-11.jpg');*/
+  margin:0 auto;
+  font-size:16pt;
 }
 
 #container {
   width:100%;
-  text-align: center;
-  font-family: helvetica-light;
+  text-align:left;
+  font-family:helvetica;
+  font-weight:700;
+  margin-left:1em;
 }
 
 #header {
-  font-family: courier;
-  font-size: 30px;
+  font-family:helvetica;
+  font-size:2.3em;
 }
 
 #highlighted-text {
-  position:relative;
-  font-size: 20px;
-  width:500px;
-  margin: 0 auto;
-  line-height: 28px;
+  font-size:2em;
+  width:25em;
+  line-height:1em;
 }
 
 #test-string {
@@ -37,64 +37,28 @@ body {
 
 #active {
   color:white;
-  background: rgba(0, 0, 0, .6);
-}
-
-#kids {
-  position:relative;
-  width:100%;
-}
-
-#boy {
-  position:absolute;
-  padding-top: 60px;
-  padding-left:-50px;
-  -moz-transform: scaleX(-1);
-  -o-transform: scaleX(-1);
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
-  filter: FlipH;
-  -ms-filter: "FlipH";
-  z-index: 1;
-}
-
-#gurl-image {
-  position:relative;
-  padding-top:47px;
-  padding-left:240px;
-  text-align: left;
-}
-
-td {
-  width:50px;
+  background:blue;
 }
 
 #text-box {
-  position:relative;
-  font-size: 20px;
+  margin-top:1em;
+  font-size:1em;
 }
 
 #text {
   display:none;
-  position:relative;
-  padding-top: 50px;
-  width:600px;
-  margin: 0 auto;
 }
 
 #typing-zone {
-  text-align: center;
-  font-size: 16px;
+  text-align:left;
+  font-size:1em;
   padding:5px;
-  width:500px;
+  width:10em;
 }
 
 #stats {
-  font-family: courier;
-  font-size: 18px;
-  font-weight: bold;
-  position:relative;
-  padding-top: 40px;
-  width:600px;
-  margin: 0 auto;
+  font-family:helvetica;
+  font-size:1em;
+  font-weight:700;
+  padding-top:40px;
 }
