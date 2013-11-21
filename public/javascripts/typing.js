@@ -1,10 +1,10 @@
-var Helper = {
+var DataInterpreter = {
   keyPressed: function(keycode) {
     return String.fromCharCode(keycode)
   },
 
   numberOfWords: function(string) {
-    var length = string.split(' ').length;
+    var length = string.split(" ").length;
     return length;
   },
 
@@ -15,8 +15,8 @@ var Helper = {
     return wpm;
   },
 
-  accuracyRating: function(user_typed, actual_text) {
-    return Math.floor((actual_text.length)/user_typed * 100);
+  accuracyRating: function(userTyped, actualText) {
+    return Math.floor((actualText.length)/userTyped * 100);
   }
 }
 
@@ -46,64 +46,65 @@ function startTyping() {
   var timer = new Timer();
   var testString = document.getElementById("test-string").innerText;
 
-  bindEventListeners();
-  parseStringToHighlight(testString);
+  var StringManipulator = {
+    concatenate: function(letter, string) {
+      if (Checker.charCorrect(letter, string)) {
+        correctChars = correctChars.concat(letter);
+        setTimer(string);
+        Render.string("text", correctChars);
+      }
+    },
+
+    parse: function(testString) {
+      var indivLetters = testString.split("")
+      $("#highlighted-text").html('<span class="letters done" id="active">' + indivLetters[0] + '</span>')
+      for (var i = 1; i < indivLetters.length; i++) {
+        if (indivLetters[i] === " ") {
+          $("#highlighted-text").append('<span class="spaces">' + indivLetters[i] + '</span>')
+        } else {
+          $("#highlighted-text").append('<span class="letters">' + indivLetters[i] + '</span>')
+        }
+      }
+    },
+
+    highlight: function() {
+      $("#highlighted-text span:nth-child(" + (latestChar) + ")").addClass("done").attr("id", "active");
+      $("#highlighted-text span:nth-child(" + (latestChar-1) + ")").removeAttr("id");
+    }
+  };
+
+  var Checker = {
+    isDone: function(testString){
+      if (correctChars.length === testString.length) {
+        correctChars = "";
+        return true;
+      }
+      return false;
+    },
+
+    charCorrect: function(char, testString) {
+      ++totalCharsPressed;
+      if(char === testString[latestChar]) {
+        ++latestChar;
+        StringManipulator.highlight();
+        return true;
+      }
+      return false;
+    }
+  };
 
   function gameLogic(event) {
-    concatenatingString(Helper.keyPressed(event.keyCode), testString);
-    if (isDone(testString)) {
+    StringManipulator.concatenate(DataInterpreter.keyPressed(event.keyCode), testString);
+    if (Checker.isDone(testString)) {
       var timeInSeconds = Math.floor((timer.endTime - timer.startTime) / 1000);
-      var wpm = Helper.wordsPerMinute(timeInSeconds, testString);
-      var accuracy = Helper.accuracyRating(totalCharsPressed,testString);
+      var wpm = DataInterpreter.wordsPerMinute(timeInSeconds, testString);
+      var accuracy = DataInterpreter.accuracyRating(totalCharsPressed,testString);
       Render.accuracy("accuracy", accuracy);
       Render.secondsElapsed("time-elapsed", timeInSeconds);
       Render.wordsPerMinute("wpm", wpm);
       $(".stats").removeClass("hidden");
     }
-  }
-
-  function isDone(testString) {
-    if (correctChars.length === testString.length) {
-      correctChars = "";
-      return true;
-    }
-    return false;
-  }
-
-  function checkCorrect(char, testString) {
-    ++totalCharsPressed;
-    if(char === testString[latestChar]) {
-      ++latestChar;
-      highlight();
-      return true;
-    }
-    return false;
-  }
-
-  function parseStringToHighlight(testString) {
-    var indivLetters = testString.split("")
-    $("#highlighted-text").html('<span class="letters done" id="active">' + indivLetters[0] + '</span>')
-    for (var i = 1; i < indivLetters.length; i++) {
-      if (indivLetters[i] === " ") {
-        $("#highlighted-text").append('<span class="spaces">' + indivLetters[i] + '</span>')
-      } else {
-        $("#highlighted-text").append('<span class="letters">' + indivLetters[i] + '</span>')
-      }
-    }
-  }
-
-  function highlight() {
-    $("#highlighted-text span:nth-child(" + (latestChar) + ")").addClass("done").attr("id", "active");
-    $("#highlighted-text span:nth-child(" + (latestChar-1) + ")").removeAttr("id");
-  }
-
-  function concatenatingString(letter, string) {
-    if (checkCorrect(letter, string)) {
-      correctChars = correctChars.concat(letter);
-      setTimer(string);
-      Render.string("text", correctChars);
-    }
-  }
+  };
 
   function setTimer(comparisonString) {
     if (correctChars.length === 1) {
@@ -112,10 +113,13 @@ function startTyping() {
     if (correctChars.length === comparisonString.length) {
       timer.end();
     }
-  }
+  };
 
   function bindEventListeners() {
     document.addEventListener("keypress", gameLogic);
-  }
+  };
 
-}
+  bindEventListeners();
+  StringManipulator.parse(testString);
+
+};
