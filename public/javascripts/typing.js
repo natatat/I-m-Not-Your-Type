@@ -115,7 +115,7 @@ function startTyping() {
   }
 
   function bindEventListeners() {
-    document.getElementById("typing-zone").addEventListener("keypress", gameLogic);
+    document.addEventListener("keypress", gameLogic);
   }
 
 }
