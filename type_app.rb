@@ -13,7 +13,7 @@ end
 set :database, ENV['DATABASE_URL']
 
 get '/' do
-  @passage = Passage.find(rand(43))
+  @passage = Passage.find(:first, offset: rand(Passage.count))
   erb :index
 end
 
