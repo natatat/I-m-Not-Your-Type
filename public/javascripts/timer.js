@@ -1,9 +1,6 @@
-function Timer() { }
+function Timer() {}
+
 Timer.prototype = {
-  duration: function() {
-    if (this.startTime === 0) { return 0; }
-    return (this.endTime || new Date().getTime()) - this.startTime;
-  },
   startTime: 0,
   endTime: 0,
   start: function() {
@@ -11,5 +8,9 @@ Timer.prototype = {
   },
   end: function() {
     this.endTime = new Date().getTime();
+  },
+  duration: function() {
+    if (this.startTime === 0) { return 0; }
+    return (this.endTime || new Date().getTime()) - this.startTime;
   }
 };

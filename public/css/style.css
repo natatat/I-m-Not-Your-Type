@@ -1,70 +1,98 @@
 body {
-  margin:0;
-  background-image:url('http://www.dvd-ppt-slideshow.com/images/ppt-background/background-11.jpg');
+  margin:0 auto;
+  font-size:16pt;
 }
 
 #container {
   width:100%;
-  text-align: center;
-  font-family: helvetica-light;
+  text-align:left;
+  font-family:helvetica;
+  font-weight:700;
+  margin-left:1em;
+  margin-bottom:5em;
 }
 
 #header {
-  font-family: courier;
-  font-size: 30px;
+  width:6em;
+  font-family:helvetica;
+  font-size:5em;
+  padding-top:.7em;
+  margin-bottom:.5em;
 }
 
-#text-to-type {
-  position:relative;
-  font-size: 20px;
-  width:600px;
-  margin: 0 auto;
+#highlighted-text {
+  font-size:2em;
+  width:25em;
+  line-height:1em;
 }
 
-#kids {
-  position:relative;
-  width:100%;
+#test-string {
+  display:none;
 }
 
-#boy {
-  position:absolute;
-  padding-top: 60px;
-  padding-left:-50px;
-  -moz-transform: scaleX(-1);
-  -o-transform: scaleX(-1);
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
-  filter: FlipH;
-  -ms-filter: "FlipH";
-  z-index: 1;
+.letters {
+  white-space:pre;
+  margin:0px;
 }
 
-#gurl-image {
-  position:relative;
-  padding-top:47px;
-  padding-left:240px;
-  text-align: left;
+.spaces {
+  margin:0px;
 }
 
-td {
-  width:70px;
+#active {
+  color:white;
+  background:blue;
+}
+
+.done {
+  color:white;
+  background:blue;
 }
 
 #text-box {
-  position:relative;
-  font-size: 20px;
+  margin-top:1em;
+  font-size:1em;
 }
 
 #text {
-  position:relative;
-  padding-top: 50px;
-  width:600px;
-  margin: 0 auto;
+  display:none;
 }
 
-#typing-zone {
-  text-align: center;
-  font-size: 16px;
+.type {
+  text-align:left;
+  font-size:1em;
   padding:5px;
-  width:500px;
+  width:2.05em;
+  font-family:helvetica;
+  font-weight:700;
+  border:none;
+  background:blue;
+  color:white;
+}
+
+#stats {
+  font-family:helvetica;
+  font-size:1em;
+  font-weight:700;
+  margin-top:2em;
+}
+
+#footer {
+  position:fixed;
+  text-align:left;
+  font-family:helvetica;
+  font-weight:700;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+  padding-left:1.5em;
+  font-size:.7em;
+  margin-top:10em;
+  width:59em;
+  bottom:0;
+  background-color: white;
+  z-index:1;
+}
+
+.hidden {
+  display:none;
 }

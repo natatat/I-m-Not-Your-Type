@@ -1,76 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="css/style.css">
-  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script src="vendors/jquery.js"></script>
   <script src="javascripts/timer.js"></script>
   <script src="javascripts/typing.js"></script>
   <script src="application.js"></script>
 </head>
 
 <body>
+
 <div id="container">
+
   <div id="header">
-    <h1>I'm Not Your Type!</h1>
-  </div>
-  <div id="text-to-type">
-    <p id="test">Hey, I just noticed you looking at me across the room. I'll give you a minute to catch your breath!</p>
+    <span class="type">type</span> it out.
   </div>
 
-  <div id="text-box">
-    <input id="typing-zone" type="text" name="Type Box" placeholder="TYPE!">
-  </div>
-  <div id="kids">
-    <div id="boy">
-      <img src="boy.png" width="38%">
-    </div>
-    <div id="gurl-image">
-      <table class="gurl">
-        <tr>
-          <td><img src="gurl.png" width="134px" height="179px"></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-      </table>
+  <div id="text-to-type">
+    <span id="test-string"><%= @passage.text %></span>
+    <div id="highlighted-text">
     </div>
   </div>
+
   <div id="text"></div>
-  <div id="timer">
-    <br/>
-    <span id="wpm"></span>
-    <br/>
-    <span id="time-elapsed"></span>
-    <br/>
-    <span id="accuracy"></span>
+  <div id="stats">
+    <div class="stats hidden">words per minute == <span id="wpm"></span></div>
+    <div class="stats hidden">total seconds == <span id="time-elapsed"></span></div>
+    <div class="stats hidden">accuracy == <span id="accuracy"></span>%</div>
   </div>
+
 </div>
+
+<div id="footer">
+  a gopher snake original production. text samples scraped from g snake blogs. made during fall 2013 while at dev bootcamp.
+</div>
+
 </body>
 </html>

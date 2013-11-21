@@ -2,11 +2,18 @@ source "https://rubygems.org"
 
 ruby "1.9.3"
 
+#encoding: utf-8
+
 gem 'sinatra'
+gem 'sinatra-activerecord'
+gem 'pg'
 
 group :development, :test do
-  gem 'rspec'
-  gem 'capybara'
+  gem 'dotenv'
   gem 'shotgun'
+  gem 'nokogiri'
+  gem 'rspec'
   gem 'jasmine'
+  gem 'capybara'
+  gem 'shoulda-matchers'
 end
