@@ -58,7 +58,12 @@ body {
   text-align:left;
   font-size:1em;
   padding:5px;
-  width:10em;
+  width:2.05em;
+  font-family:helvetica;
+  font-weight:700;
+  border:none;
+  background:blue;
+  color:white;
 }
 
 #stats {
@@ -66,6 +71,20 @@ body {
   font-size:1em;
   font-weight:700;
   margin-top:2em;
+}
+
+#footer {
+  position:relative;
+  text-align:left;
+  font-family:helvetica;
+  font-weight:700;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-left:1.5em;
+  font-size:.7em;
+  margin-top:10em;
+  width:100%;
+  background-color: blue;
 }
 
 .hidden {

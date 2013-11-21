@@ -93,8 +93,8 @@ function startTyping() {
   }
 
   function highlight() {
-    $("#highlighted-text span:nth-child(" + (latestChar + 1) + ")").addClass("done").attr("id", "active");
-    $("#highlighted-text span:nth-child(" + (latestChar) + ")").removeAttr("id");
+    $("#highlighted-text span:nth-child(" + (latestChar) + ")").addClass("done").attr("id", "active");
+    $("#highlighted-text span:nth-child(" + (latestChar-1) + ")").removeAttr("id");
   }
 
   function concatenatingString(letter, string) {
