@@ -2,7 +2,7 @@
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="css/style.css">
-  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script src="vendors/jquery.js"></script>
   <script src="javascripts/timer.js"></script>
   <script src="javascripts/typing.js"></script>
   <script src="application.js"></script>
@@ -27,9 +27,9 @@
   </div>
   <div id="text"></div>
   <div id="stats">
-    <div id="wpm"></div>
-    <div id="time-elapsed"></div>
-    <div id="accuracy"></div>
+    <div class="stats hidden">words per minute: <span id="wpm"></span></div>
+    <div class="stats hidden">total seconds: <span id="time-elapsed"></span></div>
+    <div class="stats hidden">accuracy: <span id="accuracy"></span>%</div>
   </div>
 
 </div>

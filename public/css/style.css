@@ -40,6 +40,11 @@ body {
   background:blue;
 }
 
+.done {
+  color:white;
+  background:blue;
+}
+
 #text-box {
   margin-top:1em;
   font-size:1em;
@@ -60,5 +65,9 @@ body {
   font-family:helvetica;
   font-size:1em;
   font-weight:700;
-  padding-top:40px;
+  margin-top:2em;
+}
+
+.hidden {
+  display:none;
 }

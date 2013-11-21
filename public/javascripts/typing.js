@@ -1,5 +1,4 @@
-var StatHelper = {
-
+var Helper = {
   keyPressed: function(keycode) {
     return String.fromCharCode(keycode)
   },
@@ -19,37 +18,53 @@ var StatHelper = {
   accuracyRating: function(user_typed, actual_text) {
     return Math.floor((actual_text.length)/user_typed * 100);
   }
+}
 
+var Render = {
+  string: function(id, string) {
+    document.getElementById(id).innerText = string;
+  },
+
+  secondsElapsed: function(id, seconds) {
+    document.getElementById(id).innerText = seconds;
+  },
+
+  wordsPerMinute: function(id, wpm) {
+    document.getElementById(id).innerText = wpm;
+  },
+
+  accuracy: function(id, accuracy) {
+    document.getElementById(id).innerText = accuracy;
+  }
 }
 
 function startTyping() {
 
-  bindEventListeners();
-
-  var correctChars = '';
-  var nthChildCounter = 0;
+  var correctChars = "";
   var latestChar = 0;
   var totalCharsPressed = 0;
   var timer = new Timer();
   var testString = document.getElementById("test-string").innerText;
 
+  bindEventListeners();
   parseStringToHighlight(testString);
 
   function gameLogic(event) {
-    concatenatingString(StatHelper.keyPressed(event.keyCode), testString);
+    concatenatingString(Helper.keyPressed(event.keyCode), testString);
     if (isDone(testString)) {
       var timeInSeconds = Math.floor((timer.endTime - timer.startTime) / 1000);
-      var wpm = StatHelper.wordsPerMinute(timeInSeconds, testString);
-      var accuracy = StatHelper.accuracyRating(totalCharsPressed,testString);
-      renderAccuracy("accuracy", accuracy);
-      renderSecondsElapsed("time-elapsed", timeInSeconds);
-      renderWPM("wpm", wpm);
+      var wpm = Helper.wordsPerMinute(timeInSeconds, testString);
+      var accuracy = Helper.accuracyRating(totalCharsPressed,testString);
+      Render.accuracy("accuracy", accuracy);
+      Render.secondsElapsed("time-elapsed", timeInSeconds);
+      Render.wordsPerMinute("wpm", wpm);
+      $(".stats").removeClass("hidden");
     }
   }
 
   function isDone(testString) {
     if (correctChars.length === testString.length) {
-      correctChars = '';
+      correctChars = "";
       return true;
     }
     return false;
@@ -67,7 +82,7 @@ function startTyping() {
 
   function parseStringToHighlight(testString) {
     var indivLetters = testString.split("")
-    $("#highlighted-text").html('<span class= "letters" id="active">' + indivLetters[0] + '</span>')
+    $("#highlighted-text").html('<span class="letters done" id="active">' + indivLetters[0] + '</span>')
     for (var i = 1; i < indivLetters.length; i++) {
       if (indivLetters[i] === " ") {
         $("#highlighted-text").append('<span class="spaces">' + indivLetters[i] + '</span>')
@@ -78,7 +93,7 @@ function startTyping() {
   }
 
   function highlight() {
-    $("#highlighted-text span:nth-child(" + (latestChar + 1) + ")").attr("id", "active");
+    $("#highlighted-text span:nth-child(" + (latestChar + 1) + ")").addClass("done").attr("id", "active");
     $("#highlighted-text span:nth-child(" + (latestChar) + ")").removeAttr("id");
   }
 
@@ -86,7 +101,7 @@ function startTyping() {
     if (checkCorrect(letter, string)) {
       correctChars = correctChars.concat(letter);
       setTimer(string);
-      renderString("text", correctChars);
+      Render.string("text", correctChars);
     }
   }
 
@@ -100,25 +115,7 @@ function startTyping() {
   }
 
   function bindEventListeners() {
-    document.getElementById('typing-zone').addEventListener('keypress', gameLogic);
-  }
-
-  // VIEW RENDERERS
-
-  function renderString(id, string) {
-    document.getElementById(id).innerText = string;
-  }
-
-  function renderSecondsElapsed(id, seconds) {
-    document.getElementById(id).innerText = "total seconds: " + seconds;
-  }
-
-  function renderWPM(id, wpm) {
-    document.getElementById(id).innerText = "words per minute: " + wpm;
-  }
-
-  function renderAccuracy(id, accuracy) {
-    document.getElementById(id).innerText = "accuracy: " + accuracy + "%";
+    document.getElementById("typing-zone").addEventListener("keypress", gameLogic);
   }
 
 }
