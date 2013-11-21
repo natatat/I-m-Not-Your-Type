@@ -12,6 +12,7 @@ body {
 }
 
 #header {
+  width:6em;
   font-family:helvetica;
   font-size:5em;
   padding-top:.7em;
@@ -85,7 +86,7 @@ body {
   padding-left:1.5em;
   font-size:.7em;
   margin-top:10em;
-  width:100%;
+  width:25em;
 }
 
 .hidden {
