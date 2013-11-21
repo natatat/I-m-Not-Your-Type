@@ -13,6 +13,7 @@ class Passage < ActiveRecord::Base
 
   def fix_punctuation
     self.text.gsub!(/’/, "'")
+    self.text.gsub!(/‘/, "'")
     self.text.gsub!(/“/, '"')
     self.text.gsub!(/”/, '"')
     self.text.gsub!(/…/, "...")
