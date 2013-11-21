@@ -9,6 +9,7 @@ body {
   font-family:helvetica;
   font-weight:700;
   margin-left:1em;
+  margin-bottom:5em;
 }
 
 #header {
@@ -86,7 +87,7 @@ body {
   padding-left:1.5em;
   font-size:.7em;
   margin-top:10em;
-  width:100%;
+  width:59em;
   bottom:0;
   background-color: white;
   z-index:1;
