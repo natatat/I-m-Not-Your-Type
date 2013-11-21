@@ -77,16 +77,19 @@ body {
 }
 
 #footer {
-  position:relative;
+  position:fixed;
   text-align:left;
   font-family:helvetica;
   font-weight:700;
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
   padding-left:1.5em;
   font-size:.7em;
   margin-top:10em;
-  width:25em;
+  width:100%;
+  bottom:0;
+  background-color: white;
+  z-index:1;
 }
 
 .hidden {
