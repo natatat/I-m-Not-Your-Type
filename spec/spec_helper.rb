@@ -1,6 +1,8 @@
 $LOAD_PATH.unshift(File.expand_path('.'))
 ENV['RACK_ENV'] ||= 'test'
 
+#encoding: utf-8
+
 require 'type_app'
 require 'capybara/rspec'
 require 'shoulda-matchers'
