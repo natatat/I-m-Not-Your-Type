@@ -11,7 +11,7 @@ describe Passage do
 
   context "#remove_trailing_spaces" do
     it "should remove remove trailing spaces" do
-        passage = Passage.new(text: "The Non-Tech Stuff:I think I'm becoming nocturnal. I wake up at 8:40(iPhone clock time), am here at DBC at 8:58 (DBC clock time), take a nap sometime between 12:30 and 8:00 pm, then stay up until 2 AM (when DBC's alarms go on), and go to bed.  ")
+        passage = Passage.new(text: "The Non-Tech Stuff:I think I'm becoming nocturnal. I wake up at 8:40(iPhone clock time), am here at DBC at 8:58 (DBC clock time), take a nap sometime between 12:30 and 8:00 pm, then stay up until 2 AM (when DBC's alarms go on), and go to bed. ")
         passage.save
         (passage.text).should eq("The Non-Tech Stuff:I think I'm becoming nocturnal. I wake up at 8:40(iPhone clock time), am here at DBC at 8:58 (DBC clock time), take a nap sometime between 12:30 and 8:00 pm, then stay up until 2 AM (when DBC's alarms go on), and go to bed.")
     end
