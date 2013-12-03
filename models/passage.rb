@@ -9,7 +9,7 @@ class Passage < ActiveRecord::Base
 
   def remove_trailing_spaces
     self.text.gsub!(/&nbsp;/, "")
-    self.text.gsub!(/ $/, "")
+    self.text.gsub!(/ +$/, "")
   end
 
   def fix_punctuation
